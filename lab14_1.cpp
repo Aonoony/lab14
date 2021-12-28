@@ -17,3 +17,38 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double a[], int n, double b[]){
+
+    double arithsum = 0;
+    for(int i = 0; i<n ; i++){
+        arithsum += a[i];
+    }
+    b[0] = arithsum/n;
+
+    double stdsum = 0;
+    for(int i = 0; i<n ; i++){
+        stdsum += pow(a[i]-b[0], 2);
+    }
+    b[1] = sqrt(stdsum/n);
+
+    double geomul = 1;
+    for(int i = 0; i<n ; i++){
+        geomul *= a[i];
+    }
+    b[2] = pow(geomul,(double)1/n);
+
+    double harmosum = 0;
+    for(int i = 0; i<n ; i++){
+        harmosum += 1/a[i];
+    }
+    b[3] = n/harmosum;
+
+    double max = a[0], min = a[0];
+    for(int i = 1; i<n ; i++){
+        if(a[i] > max) max = a[i];       
+        if(a[i] < min) min = a[i];
+        b[4] = max;
+        b[5] = min;
+    }
+}
